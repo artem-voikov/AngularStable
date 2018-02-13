@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { IFetch } from '../shared/fetch';
 
 @Injectable()
-export class FetchServiceService {
+export class FetchService  {
 
   constructor() { }
 

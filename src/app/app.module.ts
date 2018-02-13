@@ -3,16 +3,16 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-// import { ArticleComponent } from './components/article/article.component';
 import { ArticleModule } from './components/article/article.module';
 import { SharedModule } from './shared/shared.module';
 import { ArticleComponent } from './components/article/article.component';
+import { TestComponentComponent } from './tryouts/test-component.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    // ArticleComponent
+    TestComponentComponent,
   ],
   imports: [
     BrowserModule,
