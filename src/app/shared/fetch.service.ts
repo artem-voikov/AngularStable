@@ -1,9 +1,25 @@
+import {ArticleModel, PageModel, UserModel, CommentModel } from '../model/Models';
 import { Injectable } from '@angular/core';
-import { IFetch } from '../shared/fetch';
+import { IFetch } from './fetch';
 
 @Injectable()
-export class FetchService  {
+export class FetchService implements IFetch {
 
-  constructor() { }
+
+  getArticle(id: string): ArticleModel {
+    const result = new ArticleModel();
+
+
+    return result;
+  }
+  getArticles(page: PageModel): ArticleModel[] {
+    return null;
+  }
+  getUsers(page: PageModel): UserModel[] {
+    return null;
+  }
+  getComments(page: PageModel): CommentModel[] {
+    return null;
+  }
 
 }

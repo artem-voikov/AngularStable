@@ -1,7 +1,9 @@
 import { Component, OnInit, Output } from '@angular/core';
 
-import { Fetch } from '../shared/fetch';
+import { IFetch } from '../shared/fetch';
 import { FetchService } from '../shared/fetch.service';
+import mocker from 'mocker-data-generator';
+import {ArticleModel, PageModel, UserModel, CommentModel } from '../model/Models';
 
 @Component({
   selector: 'app-test-component',
@@ -25,13 +27,13 @@ export class TestComponentComponent implements OnInit {
 
     // const ftch: Fetch = new FetchService();
 
-    this.output = `${mc.constructor.name} → ${mc.getOtherData()}  → ${mc.name} = ${typeof (md)} → ${md.getOtherData('sdf')}`;
+    this.output = `${mc.constructor.name} → ${mc.getOtherData()}  → ${mc.name} = ${typeof (md)} → ${md.getOtherData()}`;
     // this.tryInterface = `${typeof (ftch)} of ${typeof (ftch.getArticle)}`;
 
-    const myInt: IMyStrategy = {
-      name: 'myInt',
-      getData(): () => any { return name; }
-    };
+    // const myInt: IMyStrategy = {
+    //   name: 'myInt',
+    //   getData(): () => string { return name; },
+    // };
 
     // this.tryInterface = `${myInt.getData} & ${myInt.getOtherData} & ${myInt.constructor.name}`;
 
@@ -42,7 +44,7 @@ export class TestComponentComponent implements OnInit {
 }
 
 interface MyCallback {
-  (name: string): string;
+  [name: string]: string;
 }
 
 interface IMyStrategy {
@@ -81,7 +83,7 @@ class MyDerived extends MyClass {
     return `${super.getData()}, ${this.id}`;
   }
 
-  getOtherData(ext: string) {
-    return `df ${ext}`;
+  getOtherData() {
+    return `df ${super.getData()}`;
   }
 }
