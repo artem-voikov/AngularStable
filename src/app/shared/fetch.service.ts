@@ -1,25 +1,47 @@
-import {ArticleModel, PageModel, UserModel, CommentModel } from '../model/Models';
+import { ArticleModel, PageModel, UserModel, CommentModel } from '../model/Models';
 import { Injectable } from '@angular/core';
 import { IFetch } from './fetch';
 
 @Injectable()
 export class FetchService implements IFetch {
 
+  private articles: ArticleModel[];
+
+  constructor() {
+
+    this.initArticles();
+
+  }
+
+  initArticles() {
+    if (this.articles === undefined) {
+      // tslint:disable-next-line:max-line-length
+      this.articles = [{ 'title': 'reprehenderit amet eu laborum ea in aliqua in', 'descritpion': 'Ad adipisicing ut aliquip enim sunt exercitation quis qui irure. Anim quis laborum deserunt non aliquip. Aliquip esse occaecat ex ullamco aute. Officia ex enim excepteur ad anim commodo exercitation nulla. In dolor nulla officia eu incididunt nisi consequat velit qui et laborum officia elit do. Sunt dolore nisi officia minim pariatur.', 'body': 'Voluptate non sunt veniam veniam reprehenderit Lorem. Mollit culpa nulla magna adipisicing incididunt labore proident sunt dolor. Sit consectetur consequat id occaecat. Ad mollit cillum laborum fugiat pariatur excepteur incididunt incididunt mollit aliquip incididunt laborum. Deserunt excepteur irure commodo veniam. Amet quis ipsum esse veniam officia id non nostrud.', 'info': { 'owner': { 'avatar': 'http://placehold.it/32x32', 'login': 'Medalert', 'lname': 'Alexander', 'fname': 'Chandler', 'id': '5a86d0f95e18f536a476537d' }, 'updated': 'Wednesday, October 14, 2015 4:46 AM', 'created': 'Tuesday, May 5, 2015 12:29 AM' }, 'isHidden': true, 'comments': [{ 'info': { 'owner': { 'avatar': 'http://placehold.it/32x32', 'login': 'Genekom', 'lname': 'Morrow', 'fname': 'Hall', 'id': '5a86d0f9b261d97e63705e4a' }, 'updated': 'Thursday, January 23, 2014 10:03 AM', 'created': 'Tuesday, August 2, 2016 3:12 PM' }, 'body': 'eu', 'isHidden': false }, { 'info': { 'owner': { 'avatar': 'http://placehold.it/32x32', 'login': 'Isologia', 'lname': 'Downs', 'fname': 'Carey', 'id': '5a86d0f950d2aad839ae7410' }, 'updated': 'Saturday, August 27, 2016 11:51 AM', 'created': 'Monday, July 14, 2014 9:51 PM' }, 'body': 'laborum', 'isHidden': true }, { 'info': { 'owner': { 'avatar': 'http://placehold.it/32x32', 'login': 'Handshake', 'lname': 'Tate', 'fname': 'Hollie', 'id': '5a86d0f9932d814718d3a023' }, 'updated': 'Saturday, September 2, 2017 6:17 PM', 'created': 'Friday, March 13, 2015 5:59 PM' }, 'body': 'in', 'isHidden': true }, { 'info': { 'owner': { 'avatar': 'http://placehold.it/32x32', 'login': 'Opticom', 'lname': 'Velez', 'fname': 'Dorthy', 'id': '5a86d0f96c671da987b0e40e' }, 'updated': 'Sunday, March 9, 2014 10:26 AM', 'created': 'Monday, September 5, 2016 1:11 AM' }, 'body': 'aliqua', 'isHidden': true }, { 'info': { 'owner': { 'avatar': 'http://placehold.it/32x32', 'login': 'Exostream', 'lname': 'Ellis', 'fname': 'Hyde', 'id': '5a86d0f9ea0c6d485a9df04d' }, 'updated': 'Friday, April 29, 2016 10:16 AM', 'created': 'Wednesday, October 8, 2014 7:23 AM' }, 'body': 'enim', 'isHidden': true }, { 'info': { 'owner': { 'avatar': 'http://placehold.it/32x32', 'login': 'Zerology', 'lname': 'Simon', 'fname': 'Vera', 'id': '5a86d0f9d9a6e255082999ac' }, 'updated': 'Saturday, January 31, 2015 1:51 AM', 'created': 'Tuesday, November 11, 2014 12:25 AM' }, 'body': 'commodo', 'isHidden': false }, { 'info': { 'owner': { 'avatar': 'http://placehold.it/32x32', 'login': 'Cytrek', 'lname': 'Simpson', 'fname': 'Tanisha', 'id': '5a86d0f95dc7cd5d8d8d6f6f' }, 'updated': 'Sunday, April 10, 2016 5:56 AM', 'created': 'Wednesday, July 16, 2014 1:42 PM' }, 'body': 'ad', 'isHidden': false }] }, { 'title': 'consectetur aliquip eiusmod excepteur et exercitation duis incididunt', 'descritpion': 'Deserunt aliquip amet amet consectetur nulla. Reprehenderit tempor sint dolor et. Nulla ut velit velit sint laboris veniam elit. Do aute minim non laborum adipisicing quis. Officia consectetur esse ipsum quis qui cupidatat sint sunt voluptate dolore ipsum deserunt elit. Occaecat reprehenderit laborum non commodo nostrud culpa laboris laborum nisi. Duis amet sit esse non nulla incididunt tempor ipsum deserunt est ipsum fugiat esse.', 'body': 'Elit fugiat enim quis dolore et excepteur aliquip adipisicing esse velit ex aute proident eiusmod. Irure qui sunt ipsum reprehenderit commodo aute irure consequat exercitation velit aliqua. Qui amet et aliqua magna nisi magna amet pariatur Lorem. Nulla ut minim reprehenderit laboris consectetur. Incididunt fugiat id aliqua non nostrud. Adipisicing culpa consectetur reprehenderit laboris nulla id.', 'info': { 'owner': { 'avatar': 'http://placehold.it/32x32', 'login': 'Autograte', 'lname': 'Dudley', 'fname': 'Evangeline', 'id': '5a86d0f97592f8f65c7de80a' }, 'updated': 'Sunday, January 18, 2015 6:17 PM', 'created': 'Wednesday, November 25, 2015 8:28 AM' }, 'isHidden': true, 'comments': [{ 'info': { 'owner': { 'avatar': 'http://placehold.it/32x32', 'login': 'Danja', 'lname': 'Greene', 'fname': 'Rodgers', 'id': '5a86d0f9b0bed6e6c9802ab8' }, 'updated': 'Thursday, March 6, 2014 1:38 AM', 'created': 'Wednesday, January 18, 2017 6:07 PM' }, 'body': 'qui', 'isHidden': false }, { 'info': { 'owner': { 'avatar': 'http://placehold.it/32x32', 'login': 'Terascape', 'lname': 'Horn', 'fname': 'Lilian', 'id': '5a86d0f92dc98aa7f91b90c0' }, 'updated': 'Friday, January 24, 2014 6:23 PM', 'created': 'Saturday, August 22, 2015 11:01 PM' }, 'body': 'ad', 'isHidden': true }] }, { 'title': 'proident cillum exercitation velit laboris consectetur sunt aliqua', 'descritpion': 'Do ex esse minim nostrud dolor proident sunt. Sint sit adipisicing culpa commodo ex esse do voluptate enim. Nostrud nostrud incididunt amet id proident nisi ad minim nisi dolor excepteur occaecat.', 'body': 'Aliquip pariatur ea ex qui sint excepteur mollit deserunt eiusmod nostrud sunt ex sint ullamco. Consequat dolore cupidatat quis culpa incididunt reprehenderit velit commodo veniam velit proident quis adipisicing. Consequat officia officia irure deserunt. Labore dolor ullamco ipsum laboris pariatur occaecat ea proident cillum eiusmod esse eu ex. Aliquip eu veniam et aliquip elit et adipisicing duis tempor eiusmod. Do eiusmod quis mollit reprehenderit nisi amet mollit et reprehenderit laborum velit laborum.', 'info': { 'owner': { 'avatar': 'http://placehold.it/32x32', 'login': 'Hopeli', 'lname': 'Wyatt', 'fname': 'Mitchell', 'id': '5a86d0f9d5744780fd88b88f' }, 'updated': 'Tuesday, June 20, 2017 12:37 AM', 'created': 'Tuesday, March 7, 2017 4:10 PM' }, 'isHidden': true, 'comments': [{ 'info': { 'owner': { 'avatar': 'http://placehold.it/32x32', 'login': 'Comverges', 'lname': 'Salas', 'fname': 'Mckenzie', 'id': '5a86d0f9468a1691ea50814d' }, 'updated': 'Monday, October 30, 2017 1:37 PM', 'created': 'Sunday, September 7, 2014 5:33 AM' }, 'body': 'ipsum', 'isHidden': true }, { 'info': { 'owner': { 'avatar': 'http://placehold.it/32x32', 'login': 'Norsul', 'lname': 'Levy', 'fname': 'Finley', 'id': '5a86d0f93870d0525336e135' }, 'updated': 'Saturday, July 26, 2014 2:14 AM', 'created': 'Saturday, November 18, 2017 2:51 PM' }, 'body': 'deserunt', 'isHidden': true }, { 'info': { 'owner': { 'avatar': 'http://placehold.it/32x32', 'login': 'Quintity', 'lname': 'Horne', 'fname': 'Wendy', 'id': '5a86d0f93e50d4dfa6067bca' }, 'updated': 'Sunday, January 4, 2015 3:09 PM', 'created': 'Saturday, October 18, 2014 2:01 PM' }, 'body': 'in', 'isHidden': true }, { 'info': { 'owner': { 'avatar': 'http://placehold.it/32x32', 'login': 'Affluex', 'lname': 'Arnold', 'fname': 'Brown', 'id': '5a86d0f96e9952911c4f5897' }, 'updated': 'Friday, January 26, 2018 10:03 PM', 'created': 'Wednesday, September 27, 2017 9:10 AM' }, 'body': 'ex', 'isHidden': true }, { 'info': { 'owner': { 'avatar': 'http://placehold.it/32x32', 'login': 'Xleen', 'lname': 'Terry', 'fname': 'Frances', 'id': '5a86d0f92b8a044b01469866' }, 'updated': 'Saturday, December 16, 2017 1:53 AM', 'created': 'Wednesday, February 17, 2016 1:58 AM' }, 'body': 'aliqua', 'isHidden': true }, { 'info': { 'owner': { 'avatar': 'http://placehold.it/32x32', 'login': 'Comveyor', 'lname': 'Clayton', 'fname': 'Buckley', 'id': '5a86d0f9193381ea92b3bd93' }, 'updated': 'Tuesday, June 27, 2017 9:23 PM', 'created': 'Monday, July 13, 2015 8:00 AM' }, 'body': 'quis', 'isHidden': true }] }];
+      console.log('wut! articles init');
+    }
+  }
 
   getArticle(id: string): ArticleModel {
-    const result = new ArticleModel();
+    if (this.articles === undefined) {
+      this.initArticles();
+    }
 
-
-    return result;
+    return this.articles[0];
   }
   getArticles(page: PageModel): ArticleModel[] {
-    return null;
+    if (this.articles === undefined) {
+      this.initArticles();
+    }
+
+    return this.articles;
   }
   getUsers(page: PageModel): UserModel[] {
-    return null;
+    // tslint:disable-next-line:max-line-length
+    return [{ 'avatar': 'http://placehold.it/32x32', 'login': 'Maroptic', 'lname': 'Sharp', 'fname': 'Weaver', 'id': '5a86b2638d4cbf05991aef6d' }, { 'avatar': 'http://placehold.it/32x32', 'login': 'Helixo', 'lname': 'Garza', 'fname': 'Sheryl', 'id': '5a86b2632629de1ac645aa8d' }, { 'avatar': 'http://placehold.it/32x32', 'login': 'Unq', 'lname': 'Craft', 'fname': 'Gregory', 'id': '5a86b26312211b65f34c9292' }, { 'avatar': 'http://placehold.it/32x32', 'login': 'Virva', 'lname': 'Camacho', 'fname': 'Hawkins', 'id': '5a86b26344db90239f419b55' }, { 'avatar': 'http://placehold.it/32x32', 'login': 'Bristo', 'lname': 'Michael', 'fname': 'Hubbard', 'id': '5a86b26329af5be8b2b42c79' }, { 'avatar': 'http://placehold.it/32x32', 'login': 'Darwinium', 'lname': 'Valdez', 'fname': 'Patel', 'id': '5a86b2637c44ebd603b35119' }, { 'avatar': 'http://placehold.it/32x32', 'login': 'Zuvy', 'lname': 'Nunez', 'fname': 'Roberta', 'id': '5a86b263f2be3789b2871088' }, { 'avatar': 'http://placehold.it/32x32', 'login': 'Comveyor', 'lname': 'Nicholson', 'fname': 'Graves', 'id': '5a86b263bea54f786b68d7d2' }, { 'avatar': 'http://placehold.it/32x32', 'login': 'Comvene', 'lname': 'Flowers', 'fname': 'Hancock', 'id': '5a86b263faf837f0d9e6fe30' }, { 'avatar': 'http://placehold.it/32x32', 'login': 'Uniworld', 'lname': 'Zimmerman', 'fname': 'Dorothea', 'id': '5a86b26354a5207f5dc3e560' }, { 'avatar': 'http://placehold.it/32x32', 'login': 'Hawkster', 'lname': 'Cline', 'fname': 'Ball', 'id': '5a86b263048bf7e69fc3c6bb' }, { 'avatar': 'http://placehold.it/32x32', 'login': 'Furnitech', 'lname': 'Diaz', 'fname': 'Browning', 'id': '5a86b263620784c1f33adbf9' }];
   }
   getComments(page: PageModel): CommentModel[] {
-    return null;
+    return this.articles[0].comments;
   }
 
 }
+

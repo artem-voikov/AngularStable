@@ -2,8 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 
 import { IFetch } from '../shared/fetch';
 import { FetchService } from '../shared/fetch.service';
-import mocker from 'mocker-data-generator';
-import {ArticleModel, PageModel, UserModel, CommentModel } from '../model/Models';
+import { UserModel, PageModel, ArticleModel } from '../model/Models';
 
 @Component({
   selector: 'app-test-component',
@@ -11,34 +10,20 @@ import {ArticleModel, PageModel, UserModel, CommentModel } from '../model/Models
   styles: []
 })
 export class TestComponentComponent implements OnInit {
-
-  constructor() { }
-
   @Output() output: string;
   @Output() tryInterface: string;
+  @Output() articles: ArticleModel[];
+  fetchService: IFetch;
 
-  ngOnInit() {
+  ngOnInit(): void {
+    // this.output = this.fetchService.getArticles(new PageModel()).toLocaleString();
 
-    let mc = new MyClass('mc');
-    const md = new MyDerived('md');
-    md.id = '1';
+    this.articles = this.fetchService.getArticles(new PageModel());
 
-    mc = md;
+  }
 
-    // const ftch: Fetch = new FetchService();
-
-    this.output = `${mc.constructor.name} → ${mc.getOtherData()}  → ${mc.name} = ${typeof (md)} → ${md.getOtherData()}`;
-    // this.tryInterface = `${typeof (ftch)} of ${typeof (ftch.getArticle)}`;
-
-    // const myInt: IMyStrategy = {
-    //   name: 'myInt',
-    //   getData(): () => string { return name; },
-    // };
-
-    // this.tryInterface = `${myInt.getData} & ${myInt.getOtherData} & ${myInt.constructor.name}`;
-
-    const str: IMyStrategy = new BasicStrategy();
-    this.tryInterface = `${str.constructor.name} & ${str.getData}`;
+  constructor(fetchService: FetchService) {
+    this.fetchService = fetchService;
   }
 
 }

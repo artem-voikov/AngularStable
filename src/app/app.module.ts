@@ -7,7 +7,7 @@ import { ArticleModule } from './components/article/article.module';
 import { SharedModule } from './shared/shared.module';
 import { ArticleComponent } from './components/article/article.component';
 import { TestComponentComponent } from './tryouts/test-component.component';
-
+import { FetchService } from './shared/fetch.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { TestComponentComponent } from './tryouts/test-component.component';
     ArticleModule,
     SharedModule,
   ],
-  providers: [],
+  providers: [ FetchService ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
