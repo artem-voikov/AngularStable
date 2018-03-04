@@ -7,6 +7,5 @@
         public string Lname;
         public string Login;
         public string Avatar;
-
     }
 }

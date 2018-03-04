@@ -8,26 +8,26 @@ import { SharedModule } from './shared/shared.module';
 import { ArticleComponent } from './components/article/article.component';
 import { TestComponentComponent } from './tryouts/test-component.component';
 import { FetchService } from './shared/fetch.service';
-import { HighlightDirective } from './shared/highlight.directive';
 import { RouterModule, Route } from '@angular/router';
 import { ArticleCommentsComponent } from './components/article/article-comments.component';
+import { ArticlesListComponent } from './components/article/articles-list.component';
 
 
 const myRoutes: Route[] = [
-  { path: '/comments/:slug', component: ArticleCommentsComponent}
+  { path: 'comments', component: ArticleCommentsComponent },
+  { path: '', component: ArticlesListComponent },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponentComponent,
-    RouterModule.forRoot(myRoutes)
+    TestComponentComponent
   ],
   imports: [
     BrowserModule,
     ArticleModule,
     SharedModule,
-    RouterModule,
+    RouterModule.forRoot(myRoutes)
   ],
   providers: [FetchService],
   bootstrap: [AppComponent],

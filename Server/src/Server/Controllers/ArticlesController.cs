@@ -3,24 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Server.Model;
 using Server.Infrastructure;
+using Server.Model;
+
+// For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Server.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class ArticlesController : Controller
     {
-        IFakeFactory _fakeFactory;
-        public ValuesController(IFakeFactory factory)
+        private IFakeFactory _fakeFactory;
+
+        public ArticlesController(IFakeFactory fakeFactory)
         {
-            _fakeFactory = factory;
+            this._fakeFactory = fakeFactory;
         }
-        // GET api/values
+
+        // GET: api/values
         [HttpGet]
         public IEnumerable<ArticleModel> Get()
         {
-            return _fakeFactory.CreateArticles(19);
+            return this._fakeFactory.CreateArticles(10);
         }
 
         // GET api/values/5

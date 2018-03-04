@@ -5,12 +5,13 @@ import { ArticlesListComponent } from './articles-list.component';
 import { ArticlePreviewComponent } from './article-preview.component';
 import { ArticleCommentsComponent } from './article-comments.component';
 import { SharedModule } from '../../shared/shared.module';
-import { HighlightDirective } from '../../shared/highlight.directive';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ],
   declarations: [ArticleComponent, ArticlesListComponent, ArticlePreviewComponent, ArticleCommentsComponent],
   exports: [ArticleComponent, ArticlesListComponent, ArticlePreviewComponent, ArticleCommentsComponent]

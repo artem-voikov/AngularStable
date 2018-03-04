@@ -1,13 +1,11 @@
 ﻿using Server.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Faker;
 
 namespace Server.Infrastructure
 {
-    public class FakeFactory
+    public class FakeFactory : IFakeFactory
     {
         public IEnumerable<ArticleModel> CreateArticles(int count)
         {
