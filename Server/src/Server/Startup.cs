@@ -30,8 +30,9 @@ namespace Server
             var mongoServer = $"{Configuration["mongo:server"]}";
             var mongoDatabase = $"{Configuration["mongo:database"]}";
 
-            services.AddSingleton<IArticlesRepository>(new ArticlesRepositoryByMongo(mongoServer, mongoDatabase));
-            services.AddSingleton<IFakeFactory>(new FakeFactory());
+            //services.AddSingleton<IArticlesRepository>(new ArticlesRepositoryByMongo(mongoServer, mongoDatabase));
+            services.AddSingleton<IArticlesRepository>(new ArticleFakeRepository());
+            services.AddSingleton<IThreadRepository>(new ThreadRepository());
             services.AddSingleton<IConfiguration>(Configuration);
         }
 

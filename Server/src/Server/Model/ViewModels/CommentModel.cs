@@ -1,4 +1,4 @@
-﻿namespace Server.Model
+﻿namespace Server.ViewModels.Model
 {
     public class CommentModel
     {

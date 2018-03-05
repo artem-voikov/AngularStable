@@ -6,6 +6,7 @@ import { ArticlePreviewComponent } from './article-preview.component';
 import { ArticleCommentsComponent } from './article-comments.component';
 import { SharedModule } from '../../shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { ArticleCreateComponent } from './article-create.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,7 @@ import { RouterModule } from '@angular/router';
     SharedModule,
     RouterModule
   ],
-  declarations: [ArticleComponent, ArticlesListComponent, ArticlePreviewComponent, ArticleCommentsComponent],
+  declarations: [ArticleComponent, ArticlesListComponent, ArticlePreviewComponent, ArticleCommentsComponent, ArticleCreateComponent],
   exports: [ArticleComponent, ArticlesListComponent, ArticlePreviewComponent, ArticleCommentsComponent]
 })
 export class ArticleModule { }

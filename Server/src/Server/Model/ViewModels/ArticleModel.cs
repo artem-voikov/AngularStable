@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace Server.Model
+namespace Server.ViewModels.Model
 {
     public class ArticleModel
     {
+        public string _id;
         public string Title;
         public string Description;
         public string Body;

@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Server.Infrastructure;
 using Server.Model;
+using Server.Model.DbModels;
+using Server.ViewModels.Model;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,18 +15,19 @@ namespace Server.Controllers
     [Route("api/[controller]")]
     public class ArticlesController : Controller
     {
-        private IFakeFactory _fakeFactory;
+        private IArticlesRepository _articlesRepository;
 
-        public ArticlesController(IFakeFactory fakeFactory)
+        public ArticlesController(IArticlesRepository articlesRepository)
         {
-            this._fakeFactory = fakeFactory;
+            this._articlesRepository = articlesRepository;
         }
 
         // GET: api/values
         [HttpGet]
-        public IEnumerable<ArticleModel> Get()
+        public IEnumerable<Article> Get([FromQuery]PageModel page = null)
         {
-            return this._fakeFactory.CreateArticles(10);
+
+            return _articlesRepository.ReadArticles(page.pageSize == 0 ? PageModel.Default : page);
         }
 
         // GET api/values/5

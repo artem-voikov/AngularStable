@@ -1,29 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Server.Model;
-using MongoDB.Driver;
+using Server.Model.DbModels;
+using Server.ViewModels.Model;
 
 namespace Server.Infrastructure
 {
     public class ArticlesRepositoryByMongo : IArticlesRepository
     {
-        private const string collectionArticles = "articles";
-        MongoClient client;
-        IMongoDatabase database;
+        private string mongoDatabase;
+        private string mongoServer;
 
-        public ArticlesRepositoryByMongo(string server, string dbname)
+        public ArticlesRepositoryByMongo(string mongoServer, string mongoDatabase)
         {
-            client = new MongoClient(server);
-            database = client.GetDatabase(dbname);
+            this.mongoServer = mongoServer;
+            this.mongoDatabase = mongoDatabase;
         }
 
-        public string CreateArtice(ArticleModel article)
+        public string CreateArtice(Article article)
         {
             throw new NotImplementedException();
-            IMongoCollection<ArticleModel> articles = database.GetCollection<ArticleModel>(collectionArticles);
+        }
 
+        public string CreateArticle(Article article)
+        {
+            throw new NotImplementedException();
         }
 
         public bool Delete(string id)
@@ -31,17 +31,17 @@ namespace Server.Infrastructure
             throw new NotImplementedException();
         }
 
-        public ArticleModel ReadArticle(string id)
+        public Article ReadArticle(string id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<ArticleModel> ReadArticles(PageModel page)
+        public IEnumerable<Article> ReadArticles(PageModel page)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(ArticleModel article)
+        public bool Update(Article article)
         {
             throw new NotImplementedException();
         }

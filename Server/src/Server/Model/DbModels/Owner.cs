@@ -1,8 +1,8 @@
-﻿namespace Server.Model
+﻿namespace Server.Model.DbModels
 {
-    public class UserModel
+    public class Owner
     {
-        public string Id;
+        public string _Id;
         public string Fname;
         public string Lname;
         public string Login;

@@ -1,14 +1,15 @@
-﻿using Server.Model;
+﻿using Server.Model.DbModels;
+using Server.ViewModels.Model;
 using System.Collections.Generic;
 
 namespace Server.Infrastructure
 {
     public interface IArticlesRepository
     {
-        string CreateArtice(ArticleModel article);
+        string CreateArticle(Article article);
         bool Delete(string id);
-        bool Update(ArticleModel article);
-        ArticleModel ReadArticle(string id);
-        IEnumerable<ArticleModel> ReadArticles(PageModel page);
+        bool Update(Article article);
+        Article ReadArticle(string id);
+        IEnumerable<Article> ReadArticles(PageModel page);
     }
 }

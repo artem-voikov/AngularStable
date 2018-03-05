@@ -6,36 +6,36 @@ using Server.ViewModels.Model;
 
 namespace Server.Infrastructure
 {
-    public class FakeFactory : IFakeFactory
+    public class ArticleFakeFactory : IArticlesRepository
     {
-        public IEnumerable<ArticleModel> CreateArticles(int count)
+        private IEnumerable<Article> CreateFakeArticles(int count)
         {
-            var result = new List<ArticleModel>();
+            var result = new List<Article>();
 
             for (var i = 0; i < count; i++)
-                result.Add(CreateArticle());
+                result.Add(CreateFakeArticle());
 
             return result;
         }
 
-        private ArticleModel CreateArticle()
+        private Article CreateFakeArticle()
         {
-            var result = new ArticleModel();
+            var result = new Article();
 
+            result._Id = Guid.NewGuid().ToString();
             result.Body = Lorem.Paragraph();
-            result.Description = string.Join(" ", Lorem.Paragraphs(RandomNumber.Next(1, 3)));
             result.Info = CreateInfo();
             result.IsHidden = Convert.ToBoolean(RandomNumber.Next(0, 1));
-            result.Title = Faker.Lorem.Sentence();
-            result.Comments = CreateComments();
+            result.Title = Lorem.Sentence();
+            result.ThreadId = Guid.NewGuid().ToString();
 
             return result;
         }
 
-        private List<CommentModel> CreateComments()
+        private List<Comment> CreateComments()
         {
             int count = RandomNumber.Next(1, 4);
-            var result = new List<CommentModel>();
+            var result = new List<Comment>();
 
             for (var i = 0; i < count; i++)
                 result.Add(CreateComment());
@@ -43,9 +43,9 @@ namespace Server.Infrastructure
             return result;
         }
 
-        private CommentModel CreateComment()
+        private Comment CreateComment()
         {
-            var result = new CommentModel();
+            var result = new Comment();
 
             result.Body = Lorem.Paragraph();
             result.Info = CreateInfo();
@@ -54,52 +54,59 @@ namespace Server.Infrastructure
             return result;
         }
 
-        private InfoModel CreateInfo()
+        private Info CreateInfo()
         {
-            var result = new InfoModel();
+            var result = new Info();
 
             result.Created = DateTime.Now.ToString();
             result.Updated = DateTime.Now.ToString();
-            result.Owner = CreateUser();
+            result.OwnerId = Guid.NewGuid().ToString();
+            result.OwnerLogin = Internet.UserName();
 
             return result;
         }
 
-        private UserModel CreateUser()
+        private Owner CreateUser()
         {
-            var result = new UserModel();
+            var result = new Owner();
 
             result.Avatar = "http://placehold.it/32x32";
             result.Fname = Name.First();
             result.Lname = Name.Last();
             result.Login = Internet.UserName();
-            result.Id = RandomNumber.Next(10000, 1000000).ToString();
+            result._Id = RandomNumber.Next(10000, 1000000).ToString();
+
             return result;
         }
 
         public string CreateArtice(Article article)
         {
-            throw new NotImplementedException();
+            return CreateFakeArticle()._Id;
         }
 
         public bool Delete(string id)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public bool Update(Article article)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public Article ReadArticle(string id)
         {
-            throw new NotImplementedException();
+            return CreateFakeArticle();
         }
 
         public IEnumerable<Article> ReadArticles(PageModel page)
         {
-            throw new NotImplementedException();
+            return CreateFakeArticles(page.pageSize == 0 ? 10 : page.pageSize);
+        }
+
+        public string CreateArticle(Article article)
+        {
+            return CreateFakeArticle()._Id;
         }
     }
 }
