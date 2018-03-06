@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FetchService } from '../shared/fetch.service';
 
 @Component({
   selector: 'app-article-page',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticlePageComponent implements OnInit {
 
-  constructor() { }
+  fetch: FetchService;
+
+
+  constructor(fetch: FetchService) {
+    this.fetch = fetch;
+  }
 
   ngOnInit() {
+    this.fetch.getArticles(null);
   }
 
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
 
-import { IFetch } from '../shared/fetch';
 // import { FetchService } from '../shared/fetch.service';
 import { UserModel, PageModel, ArticleModel } from '../model/Models';
 
@@ -13,12 +12,11 @@ export class TestComponentComponent implements OnInit {
   @Output() output: string;
   @Output() tryInterface: string;
   @Output() articles: ArticleModel[];
-  fetchService: IFetch;
 
   ngOnInit(): void {
     // this.output = this.fetchService.getArticles(new PageModel()).toLocaleString();
 
-    this.articles = this.fetchService.getArticles(new PageModel());
+    // this.articles = this.fetchService.getArticles(new PageModel());
 
   }
 

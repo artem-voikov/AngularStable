@@ -11,6 +11,7 @@ import { PageModule } from './pages/page.module';
 import { ComponentsModule } from './components/components.module';
 import { ArticlePageComponent, } from './pages/article-page.component';
 import { ThreadPageComponent } from './pages/thread-page.component';
+import { HttpModule } from '@angular/http';
 
 const myRoutes: Route[] = [
   { path: 'comments', component: ThreadPageComponent },
@@ -27,7 +28,8 @@ const myRoutes: Route[] = [
     SharedModule,
     RouterModule.forRoot(myRoutes),
     PageModule,
-    ComponentsModule
+    ComponentsModule,
+    HttpModule
   ],
   // providers: [FetchService],
   bootstrap: [AppComponent],

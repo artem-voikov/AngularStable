@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// import { FetchService } from './fetch.service';
+ import { FetchService } from './fetch.service';
 
 @NgModule({
   imports: [CommonModule],
-  // providers: [FetchService]
+   providers: [FetchService]
 })
 export class SharedModule { }
