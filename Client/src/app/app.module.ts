@@ -3,19 +3,18 @@ import { NgModule, Type } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { ArticleModule } from './components/article/article.module';
 import { SharedModule } from './shared/shared.module';
-import { ArticleComponent } from './components/article/article.component';
 import { TestComponentComponent } from './tryouts/test-component.component';
-import { FetchService } from './shared/fetch.service';
+// import { FetchService } from './shared/fetch.service';
 import { RouterModule, Route } from '@angular/router';
-import { ArticleCommentsComponent } from './components/article/article-comments.component';
-import { ArticlesListComponent } from './components/article/articles-list.component';
-
+import { PageModule } from './pages/page.module';
+import { ComponentsModule } from './components/components.module';
+import { ArticlePageComponent, } from './pages/article-page.component';
+import { ThreadPageComponent } from './pages/thread-page.component';
 
 const myRoutes: Route[] = [
-  { path: 'comments', component: ArticleCommentsComponent },
-  { path: '', component: ArticlesListComponent },
+  { path: 'comments', component: ThreadPageComponent },
+  { path: '', component: ArticlePageComponent },
 ];
 
 @NgModule({
@@ -25,11 +24,12 @@ const myRoutes: Route[] = [
   ],
   imports: [
     BrowserModule,
-    ArticleModule,
     SharedModule,
-    RouterModule.forRoot(myRoutes)
+    RouterModule.forRoot(myRoutes),
+    PageModule,
+    ComponentsModule
   ],
-  providers: [FetchService],
+  // providers: [FetchService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

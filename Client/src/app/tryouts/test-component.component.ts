@@ -1,7 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 
 import { IFetch } from '../shared/fetch';
-import { FetchService } from '../shared/fetch.service';
+// import { FetchService } from '../shared/fetch.service';
 import { UserModel, PageModel, ArticleModel } from '../model/Models';
 
 @Component({
@@ -22,9 +22,9 @@ export class TestComponentComponent implements OnInit {
 
   }
 
-  constructor(fetchService: FetchService) {
-    this.fetchService = fetchService;
-  }
+  // constructor(fetchService: FetchService) {
+  //   this.fetchService = fetchService;
+  // }
 
 }
 
