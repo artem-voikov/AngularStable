@@ -1,16 +1,23 @@
-<p>
-  article-page works!
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <p>
+        article-page works! display list of articles and thread preview toggle new article form hide or display article
+      </p>
 
-  display list of articles and thread preview
+      <a [routerLink]="['./create']">Create article</a>
+      <a [routerLink]="['./preview']">Preview thread</a>
 
-  toggle new article form
+      <app-article-view></app-article-view>
 
-  hide or display article
-</p>
-
-<a [routerLink]="['./create']" >Manage Crises</a>
-<a [routerLink]="['./preview']" >Manage Heroes</a>
-
-<app-article-view></app-article-view>
-
-<router-outlet></router-outlet>
+      <!-- <button type="button" class="btn btn-primary"
+        [(ngModel)]="singleModel" btnCheckbox
+        btnCheckboxTrue="1" btnCheckboxFalse="0">
+  Single Toggle
+</button> -->
+    </div>
+    <div class="col-sm">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

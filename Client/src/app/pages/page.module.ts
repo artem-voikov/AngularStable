@@ -6,10 +6,12 @@ import { RouterModule, Route, Routes } from '@angular/router';
 import { ComponentsModule } from '../components/components.module';
 import { ArticleFormComponent } from '../components/article-form.component';
 import { ThreadPreviewComponent } from '../components/thread-preview.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TestpageComponent } from './testpage/testpage.component';
 
 const articleRoutes: Routes = [
   {
-    path: 'article', component: ArticlePageComponent,  children: [
+    path: 'article', component: ArticlePageComponent, children: [
       { path: 'create', component: ArticleFormComponent },
       { path: 'preview', component: ThreadPreviewComponent },
     ]
@@ -21,9 +23,10 @@ const articleRoutes: Routes = [
     CommonModule,
     RouterModule,
     ComponentsModule,
-    RouterModule.forChild(articleRoutes)
+    RouterModule.forChild(articleRoutes),
+    FormsModule
   ],
-  declarations: [ArticlePageComponent, ThreadPageComponent],
+  declarations: [ArticlePageComponent, ThreadPageComponent, TestpageComponent],
   exports: [ArticlePageComponent, ThreadPageComponent]
 })
 export class PageModule { }

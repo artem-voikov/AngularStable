@@ -15,10 +15,14 @@ import { ThreadPreviewComponent } from './components/thread-preview.component';
 import { ThreadCommentComponent } from './components/thread-comment.component';
 import { ArticleFormComponent } from './components/article-form.component';
 import { LoginService } from './shared/login.service';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TestpageComponent } from './pages/testpage/testpage.component';
 
 const myRoutes: Routes = [
-  { path: 'article', component: ArticlePageComponent},
+  { path: 'article', component: ArticlePageComponent },
   { path: 'thread', component: ThreadPageComponent },
+  { path: 'tst', component: TestpageComponent},
   { path: '', redirectTo: 'article', pathMatch: 'full' },
 ];
 
@@ -32,7 +36,9 @@ const myRoutes: Routes = [
     RouterModule.forRoot(myRoutes),
     PageModule,
     ComponentsModule,
-    HttpModule
+    HttpModule,
+    ButtonsModule.forRoot(),
+    BrowserModule, FormsModule
   ],
   exports: [RouterModule],
   bootstrap: [AppComponent],
